@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(\w+)\/(\w+)$ index.php?mode=$1&report=$2 [QSA,L]
+RewriteRule ^(\w+)$ index.php?report=$1 [QSA,L]

@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+::selection {
+	color: #fff;
+	background-color: #8ef;
+}
+
+*{
+	font-family: ubuntu;
+}
+
+#bgoverlay {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100vh;
+	width: 100vw;
+	background-image: radial-gradient(closest-side, #555, #333);
+	opacity: 1;
+	z-index: -1;
+}
+
+* {
+	z-index: 1;
+}
+
+body > center > * {
+	color: #fff;
+}
+
+#export {
+	position: fixed;
+	display: grid;
+	top: 20px;
+	right: 20px;
+}
+
+#export > * {
+	min-width: 0px;
+}
+
+input[name='mode'] {
+	opacity: 0.5;
+	cursor: pointer;
+	transform: none;
+	border-color: #db48;
+	border-radius: 5px;
+	margin: 2px;
+	background-color: #db4;
+	box-shadow: none;
+	transition: transform 0.2s, color 0.2s, opacity 0.2s;
+	width: 90px;
+}
+
+input[name='mode']:hover {
+	color: #fff;
+	opacity: 1;
+	transform: scale(1.05, 1.05);
+}
+
+a {
+	color: #4ae;
+	font-weight: bold;
+	text-shadow: none;
+}
+
+thead > tr:first-child > *:first-child { border-radius: 9px 0 0 0; }
+
+thead > tr:first-child > *:last-child { border-radius: 0 9px 0 0; }
+
+thead > * {
+	background-color: #2224;
+	color: #000;
+}
+
+tbody > tr:nth-child(even) {
+	background-image: linear-gradient(to right, #8883, #88a3, #8883);
+}
+
+tbody > tr:last-child > *:first-child { border-radius: 0 0 0 9px; }
+
+tbody > tr:last-child > *:last-child { border-radius: 0 0 9px 0; }
+
+#results {
+	background-color: #fffd;
+	border-radius: 10px;
+	color: #222;
+}
+
+#results > thead > tr > * {
+	padding: 8px;
+}
+
+#results > tbody > tr > * {
+	padding: 4px;
+}
+
+#results > tbody > tr > td > table {
+	display: block;
+	margin: auto;
+	overflow: hidden;
+	visibility: hidden;
+	max-height: 10px;
+}
+
+#results > tbody > tr > td > table::before {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	content: "...";
+	font-weight: bold;
+	font-size: 24px;
+	color: #000;
+	visibility: visible;
+	background-color: transparent;
+	border-radius: 9px;
+	height: 100%;
+	width: 20%;
+}
+
+td.collapsed {
+	transition: border-color 0.3s;
+	cursor: pointer;
+	max-width: 30px;
+	border-radius: 3px;
+	background-color: #c88;
+	border: 3px outset #aaa8;
+}
+
+td.collapsed:active {
+	border-style: inset;
+}
+
+#results > tbody > tr > td.collapsed:hover > table::before {
+	color: #fff;
+}
+
+#results > tbody > tr > td:not(.collapsed) {
+	max-width: none;
+}
+
+#results > tbody > tr > td:not(.collapsed) > * {
+	display: block !important;
+	overflow: auto !important;
+	visibility: visible !important;
+	max-height: none !important;
+}
+
+#results > tbody > tr > td:not(.collapsed) > table {
+	background-color: #ccc;
+	border: 3px dashed #c88;
+	cursor: pointer;
+}
+
+#results > tbody > tr > td:not(.collapsed) > table::before {
+	display: none;
+}
+
+#results > tbody > tr:not(:first-child):hover {
+	background-color: #8ac3;
+}
