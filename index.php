@@ -25,7 +25,7 @@
 			$exists = false;
 		}
 		
-		if ( $mode == 'browse' ) {
+		if ( $mode == 'browse' && $exists) {
 			?>
 			<!doctype html>
 			<html>
