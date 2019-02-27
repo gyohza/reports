@@ -72,7 +72,9 @@
 		} else if (
 			$exists
 		) {
-				
+			
+			$conns = json_decode(file_get_contents("./config/connections.json"), true);
+			
 			$mt = microtime(true);
 
 			$u = str_pad( base_convert( round( ( $mt - floor($mt) ) * 10000000 ), 10, 36 ), 5, '0', STR_PAD_LEFT );
@@ -87,10 +89,11 @@
 			
 			// Loops through every query in the JSON file
 			foreach ( $rdata['queries'] as $i => $q ){
-				$servername	= $q['servername'];
-				$username	= $q['username'];
-				$password	= $q['password'];
-				$database	= $q['database'];
+				$conndata = $conns[$q['conn']];
+				$servername	= $conndata['servername'];
+				$username	= $conndata['username'];
+				$password	= $conndata['password'];
+				$database	= $conndata['database'];
 				
 				$query = "/* [ {$_SERVER['PHP_SELF']} - $reportId ] Requester IP: {$_SERVER['REMOTE_ADDR']} */" .	//
 					file_get_contents( "./queries/" . $q['query'] );
