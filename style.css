@@ -1,12 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-::selection {
-	color: #fff;
-	background-color: #8ef;
+* {
+	z-index: 1;
+	font-family: ubuntu;
+	--russian: #1E1E24;
+	--crater: #444140;
+	--wisp: #F7EBE8;
+	--salmon: #FFA987;
+	--valencia: #E54B4B;
+	--sky: #3C91E6;
+	--opacity-level: 0.4;
+	--faint-russian: rgba(30, 30, 36, var(--opacity-level));
+	--faint-crater: rgba(68, 65, 64, var(--opacity-level));
+	--faint-wisp: rgba(247, 235, 232, var(--opacity-level));
+	--faint-salmon: rgba(255, 169, 135, var(--opacity-level));
+	--faint-valencia: rgba(229, 75, 75, var(--opacity-level));
+	--faint-sky: rgba(60, 145, 230, var(--opacity-level));
 }
 
-*{
-	font-family: ubuntu;
+html {
+	background-color: var(--russian);
 }
 
 #bgoverlay {
@@ -15,13 +28,18 @@
 	left: 0px;
 	height: 100vh;
 	width: 100vw;
-	background-image: radial-gradient(closest-side, #555, #333);
-	opacity: 1;
+	filter: grayscale(50%) blur(12px);
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-image: url("https://picsum.photos/1000/?random");
+	opacity: 0.2;
 	z-index: -1;
 }
 
-* {
-	z-index: 1;
+::selection {
+	color: #fff;
+	background-color: var(--faint-sky);
 }
 
 body > center > * {
@@ -43,10 +61,10 @@ input[name='mode'] {
 	opacity: 0.5;
 	cursor: pointer;
 	transform: none;
-	border-color: #db48;
+	border-color: var(--faint-valencia);
 	border-radius: 5px;
 	margin: 2px;
-	background-color: #db4;
+	background-color: var(--valencia);
 	box-shadow: none;
 	transition: transform 0.2s, color 0.2s, opacity 0.2s;
 	width: 90px;
@@ -59,9 +77,22 @@ input[name='mode']:hover {
 }
 
 a {
-	color: #4ae;
-	font-weight: bold;
-	text-shadow: none;
+	display: inline-block;
+	color: #fff;
+	padding: 0px 4px;
+	border: 2px outset var(--faint-valencia);
+	border-radius: 2px;
+	background-color: var(--valencia);
+	font-size: 0.8em;
+	text-decoration: none;
+}
+
+a.active {
+	border-style: inset;
+}
+
+.bright {
+	color: var(--salmon);
 }
 
 thead > tr:first-child > *:first-child { border-radius: 9px 0 0 0; }
@@ -69,12 +100,12 @@ thead > tr:first-child > *:first-child { border-radius: 9px 0 0 0; }
 thead > tr:first-child > *:last-child { border-radius: 0 9px 0 0; }
 
 thead > * {
-	background-color: #2224;
-	color: #000;
+	background-color: var(--valencia);
+	color: #fff;
 }
 
 tbody > tr:nth-child(even) {
-	background-image: linear-gradient(to right, #8883, #88a3, #8883);
+	background-color: var(--faint-salmon);
 }
 
 tbody > tr:last-child > *:first-child { border-radius: 0 0 0 9px; }
@@ -82,9 +113,12 @@ tbody > tr:last-child > *:first-child { border-radius: 0 0 0 9px; }
 tbody > tr:last-child > *:last-child { border-radius: 0 0 9px 0; }
 
 #results {
-	background-color: #fffd;
+	margin: 3px;
+	background-color: var(--wisp);
 	border-radius: 10px;
-	color: #222;
+	color: var(--russian);
+	text-align: center;
+	max-width: 90vw;
 }
 
 #results > thead > tr > * {
@@ -105,16 +139,13 @@ tbody > tr:last-child > *:last-child { border-radius: 0 0 9px 0; }
 
 #results > tbody > tr > td > table::before {
 	display: inline-block;
-	text-align: center;
 	position: relative;
-	left: 50%;
-	transform: translateY(-50%) translateX(-50%);
+	transform: translateY(-50%);
 	content: "...";
 	font-weight: bold;
 	font-size: 24px;
-	color: #000;
+	color: var(--russian);
 	visibility: visible;
-	background-color: transparent;
 	border-radius: 9px;
 	height: 100%;
 	width: 20%;
@@ -125,16 +156,12 @@ td.collapsed {
 	cursor: pointer;
 	max-width: 30px;
 	border-radius: 3px;
-	background-color: #c88;
-	border: 3px outset #aaa8;
+	background-color: var(--valencia);
+	border: 3px outset var(--faint-valencia);
 }
 
 td.collapsed:active {
 	border-style: inset;
-}
-
-#results > tbody > tr > td.collapsed:hover > table::before {
-	color: #fff;
 }
 
 #results > tbody > tr > td:not(.collapsed) {
@@ -149,8 +176,9 @@ td.collapsed:active {
 }
 
 #results > tbody > tr > td:not(.collapsed) > table {
-	background-color: #ccc;
-	border: 3px dashed #c88;
+	--opacity-level: 0.1;
+	background-color: var(--faint-valencia);
+	border: 3px dashed var(--valencia);
 	cursor: pointer;
 }
 
@@ -158,6 +186,6 @@ td.collapsed:active {
 	display: none;
 }
 
-#results > tbody > tr:not(:first-child):hover {
-	background-color: #8ac3;
+#results > tbody > tr:hover {
+	background-color: var(--faint-valencia);
 }

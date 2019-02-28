@@ -199,7 +199,7 @@
 								<?php } ?>
 								
 								<h1 style='padding-top: 50px; --theme: var(--yellow);'>
-									<?php echo $report . ' <em style="color: #db4;">(' . count($items) . ' ' . (count($items) == 1 ? 'item' : 'itens' ) . ')</em>' ; ?>
+									<?php echo $report . ' <em class="bright">(' . count($items) . ' ' . (count($items) == 1 ? 'item' : 'itens' ) . ')</em>' ; ?>
 								</h1>
 					<?php
 						
@@ -226,17 +226,17 @@
 									"<small>Relatório " . implode( " e ", array( strlen( $authors ) ? "criado por $authors" : null, strlen( $maintainers ) ? "mantido por $maintainers" : null)) . ".</small>"
 								);
 						
-						echo $credits . arrTbl( array_values($items), "results", "zebra grey", "--zebraEven: rgba( 36, 36, 36, 0.06 ); margin: 0 50px 50px 50px;" );
+						echo $credits . arrTbl( array_values($items), "results");
 						
 					?>
-							<script>
-								for (elem of document.querySelectorAll('#results > tbody > tr > td > table')) {
-									elem.parentNode.classList.add('collapsed');
-									elem.parentNode.addEventListener('click', (e) => {
-										e.currentTarget.classList.toggle('collapsed');
-									});
-								}
-							</script>
+								<script>
+									for (elem of document.querySelectorAll('#results > tbody > tr > td > table')) {
+										elem.parentNode.classList.add('collapsed');
+										elem.parentNode.addEventListener('click', (e) => {
+											e.currentTarget.classList.toggle('collapsed');
+										});
+									}
+								</script>
 							</center>
 						</body>
 					</html>
