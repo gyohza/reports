@@ -1,0 +1,45 @@
+{
+	"name": "Nome do Report",
+	
+	"category": "How-to",
+	
+	"description": "Pega XXX, cruza com YYY e depois ZZZ.",
+	
+	"authors": [
+		"cara.que.fez@example.com",
+		"outro.cara.que.fez@example.com"
+	],
+	
+	"maintainers": [
+		"cara.que.mantem@example.com",
+		"outro.cara.que.mantem@example.com"
+	],
+	
+	"keywords": [
+		"How-to",
+		"Tutorial", "Como fazer"
+	],
+	
+	"queries": [
+		{
+			"conn": "db1",
+			"query": "reportExemplo.db.sql",
+			"params": {
+				"start_date": "1899-12-31",
+				"end_date": "1899-12-31",
+				"interval" : "7"
+			},
+			"key" : "item_id"
+		},
+		{
+			"conn": "db2",
+			"query": "reportExemploTeste.db2.sql",
+			"params": {
+				"start_date": "1899-12-31",
+				"end_date": "1899-12-31",
+				"interval" : "7"
+			},
+			"key" : "item_id"
+		}
+	]
+}
