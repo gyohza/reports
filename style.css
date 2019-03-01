@@ -95,9 +95,9 @@ a.active {
 	color: var(--salmon);
 }
 
-thead > tr:first-child > *:first-child { border-radius: 9px 0 0 0; }
+thead > tr:first-child > *:first-child { border-top-left-radius: 9px; }
 
-thead > tr:first-child > *:last-child { border-radius: 0 9px 0 0; }
+thead > tr:first-child > *:last-child { border-top-right-radius: 9px; }
 
 thead > * {
 	background-color: var(--valencia);
@@ -108,9 +108,9 @@ tbody > tr:nth-child(even) {
 	background-color: var(--faint-salmon);
 }
 
-tbody > tr:last-child > *:first-child { border-radius: 0 0 0 9px; }
+tbody > tr:last-child > *:first-child { border-bottom-left-radius: 9px; }
 
-tbody > tr:last-child > *:last-child { border-radius: 0 0 9px 0; }
+tbody > tr:last-child > *:last-child { border-bottom-right-radius: 9px; }
 
 #results {
 	margin: 3px;
