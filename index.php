@@ -146,12 +146,13 @@
 			}
 			
 			foreach ($items as $k => $v) {
+				unset($items[$k]);
 				foreach ($v as $header => $cell) {
-					$items[$k][$header] = utf8_encode($cell);
+					$items[utf8_encode($k)][utf8_encode($header)] = utf8_encode($cell);
 				}
 			}
 			
-			$json = json_encode ( $items );
+			$json = json_encode( $items );
 
 			switch ( $mode ) {
 				case "json":
