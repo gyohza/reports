@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 * {
-	z-index: 1;
-	font-family: ubuntu;
 	--russian: #1E1E24;
 	--crater: #444140;
 	--wisp: #F7EBE8;
@@ -16,6 +14,9 @@
 	--faint-salmon: rgba(255, 169, 135, var(--opacity-level));
 	--faint-valencia: rgba(229, 75, 75, var(--opacity-level));
 	--faint-sky: rgba(60, 145, 230, var(--opacity-level));
+
+	z-index: 1;
+	font-family: ubuntu;
 }
 
 html {
@@ -42,19 +43,51 @@ html {
 	background-color: var(--faint-sky);
 }
 
-body > center > * {
-	color: #fff;
+h1, small {
+	color: var(--wisp);
+	text-shadow: 3px 3px 2px var(--russian);
 }
 
-#export {
-	position: fixed;
-	display: grid;
-	top: 20px;
-	right: 20px;
+#content > *:not(style):not(script) {
+	display: inline-block;
+	text-align: center;
+	margin-top: 10px;
 }
 
-#export > * {
-	min-width: 0px;
+#content table {
+	margin: 3px;
+	background-color: var(--wisp);
+	border-radius: 10px;
+	color: var(--russian);
+	text-align: center;
+	max-width: 90vw;
+}
+
+#content table > thead > tr > * {
+	padding: 8px;
+}
+
+#content table > tbody > tr > * {
+	padding: 4px;
+}
+
+label {
+	padding: 3px 15px;
+}
+
+input {
+	text-align: center;
+	font-size: 1.1em;
+	padding: 4px;
+	border-radius: 4px;
+}
+
+button, input[type='submit'] {
+	padding: 5px 30px;
+	cursor: pointer;
+	color: var(--wisp);
+	background-color: var(--valencia);
+	border-color: var(--faint-valencia);
 }
 
 input[name='mode'] {
@@ -112,45 +145,6 @@ tbody > tr:last-child > *:first-child { border-bottom-left-radius: 9px; }
 
 tbody > tr:last-child > *:last-child { border-bottom-right-radius: 9px; }
 
-#results {
-	margin: 3px;
-	background-color: var(--wisp);
-	border-radius: 10px;
-	color: var(--russian);
-	text-align: center;
-	max-width: 90vw;
-}
-
-#results > thead > tr > * {
-	padding: 8px;
-}
-
-#results > tbody > tr > * {
-	padding: 4px;
-}
-
-#results > tbody > tr > td > table {
-	display: block;
-	margin: auto;
-	overflow: hidden;
-	visibility: hidden;
-	max-height: 10px;
-}
-
-#results > tbody > tr > td > table::before {
-	display: inline-block;
-	position: relative;
-	transform: translateY(-50%);
-	content: "...";
-	font-weight: bold;
-	font-size: 24px;
-	color: var(--russian);
-	visibility: visible;
-	border-radius: 9px;
-	height: 100%;
-	width: 20%;
-}
-
 td.collapsed {
 	transition: border-color 0.3s;
 	cursor: pointer;
@@ -162,30 +156,4 @@ td.collapsed {
 
 td.collapsed:active {
 	border-style: inset;
-}
-
-#results > tbody > tr > td:not(.collapsed) {
-	max-width: none;
-}
-
-#results > tbody > tr > td:not(.collapsed) > * {
-	display: block !important;
-	overflow: auto !important;
-	visibility: visible !important;
-	max-height: none !important;
-}
-
-#results > tbody > tr > td:not(.collapsed) > table {
-	--opacity-level: 0.1;
-	background-color: var(--faint-valencia);
-	border: 3px dashed var(--valencia);
-	cursor: pointer;
-}
-
-#results > tbody > tr > td:not(.collapsed) > table::before {
-	display: none;
-}
-
-#results > tbody > tr:hover {
-	background-color: var(--faint-valencia);
 }
