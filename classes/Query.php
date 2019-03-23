@@ -35,7 +35,7 @@ class Query extends HtmlContent {
 
 	public function echoContent() {
 	?>
-		<form method="GET" action="../table/<?php echo $this->report->getAlias(); ?>">
+		<form method="GET" action="../table/<?php echo $this->report->getAlias(); ?>" style="margin: auto;">
 			<div>
 				<table>
 					<thead>

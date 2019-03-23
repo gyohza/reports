@@ -20,11 +20,16 @@ class Results extends HtmlContent {
 	
 		<style>
 
+			#content {
+				width: unset;
+				max-width: 96vw !important;
+			}
+
 			#export {
 				position: fixed;
 				display: grid !important;
-				top: 20px;
-				right: 20px;
+				top: 20px !important;
+				right: 20px !important;
 			}
 
 			#export > * {
@@ -134,7 +139,7 @@ class Results extends HtmlContent {
 						"<small>Relatório " . implode( " e ", array( strlen( $authors ) ? "criado por $authors" : null, strlen( $maintainers ) ? "mantido por $maintainers" : null)) . ".</small>"
 					);
 			
-			echo $credits . "<br/>" . arrTbl(array_values($this->items), "results", "", "display: inline-block;");
+			echo $credits . arrTbl(array_values($this->items), "results", "", "display: inline-block;");
 			
 		?>
 		

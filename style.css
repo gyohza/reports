@@ -23,6 +23,10 @@ html {
 	background-color: var(--russian);
 }
 
+body {
+	text-align: center;
+}
+
 #bgoverlay {
 	position: fixed;
 	top: 0px;
@@ -43,9 +47,26 @@ html {
 	background-color: var(--faint-sky);
 }
 
+#pageHeader {
+	padding-bottom: 10px;
+}
+
 h1, small {
 	color: var(--wisp);
 	text-shadow: 3px 3px 2px var(--russian);
+}
+
+#content {
+	display: inline-grid;
+	align-content: center;
+	box-sizing: border-box;
+	padding: 50px;
+	height: 96vh;
+	width: 50%;
+	max-width: 900px;
+	min-width: 500px;
+	margin: auto; 
+	margin-bottom: 100px;
 }
 
 #content > *:not(style):not(script) {

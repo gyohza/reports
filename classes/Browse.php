@@ -22,21 +22,8 @@ class Browse extends HtmlContent {
     ?>
 
         <style>
-            #content {
-                padding-top: 50px;
-                width: 50%;
-                max-width: 900px;
-                min-width: 500px;
-                margin: auto; 
-                margin-bottom: 100px;
-            }
-
-            #content > form {
-                display: block !important;
-            }
 
             #filters {
-                margin-top: 20px;
                 padding: 24px;
                 border-radius: 5px;
                 display: grid;
@@ -85,6 +72,9 @@ class Browse extends HtmlContent {
                 color: var(--wisp);
                 border-color: var(--faint-valencia);
                 background-color: var(--valencia);
+            }
+            #btnpane > a:active {
+                border-style: inset;
             }
             .invisible {
                 display: none;

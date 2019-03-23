@@ -26,10 +26,9 @@ class HtmlDoc {
             <body>
                 <div id="bgoverlay"/></div>
                 <div id="content" style="text-align: center;">
-                    <h1 style="margin: 0; padding: 50px 0px 10px 0px;">
+                    <h1 id="pageHeader">
                         <?php echo $this->pageHeaderTitle; ?>
                     </h1>
-                    <br/>
                     <?php
                         echo $this->content->echoContent();
                     ?>
