@@ -1,15 +1,5 @@
 <?php
 
-require_once "./src/_report.php";
-require_once './utils/arrayTools.php';
-require_once './utils/mysqlPDO.php';
-
-abstract class HtmlContent {
-
-    abstract protected function echoContent();
-
-}
-
 class HtmlDoc {
 
     private $content;
@@ -65,9 +55,5 @@ class HtmlDoc {
     }
 
 }
-
-require_once "./src/query.php";
-require_once "./src/browse.php";
-require_once "./src/results.php";
 
 ?>

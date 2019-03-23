@@ -1,6 +1,8 @@
 <?php
 
-	require_once "./src/_templates.php";
+	require_once '../utils/arrayTools.php';
+	require_once '../utils/mysqlPDO.php';
+	require_once dirname(__FILE__) . "/classes/_loader.php";
 	
 	$mode = isset($_GET['mode']) ? trim ( $_GET['mode'] ) : "table";
 	$repAlias = isset($_GET['report']) ? trim($_GET['report']) : false;
@@ -17,16 +19,6 @@
 		$browse->buildPage();
 		
 	} else {
-		
-		try{
-			$rdata = json_decode ( file_get_contents( "./queries/{$_GET['report']}.json" ), true );
-			
-			$repName = $rdata['name'];
-			
-			$exists = !json_last_error();
-		} catch ( Exception $e ) {
-			$exists = false;
-		}
 		
 		$report = new Report($repAlias);
 		
