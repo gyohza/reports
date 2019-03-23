@@ -22,6 +22,8 @@ class Report {
 		
 		try {
 			
+			if (!file_exists("./queries/$reportAlias.json")) throw new Exception('Report does not exist!');
+
 			$this->meta = json_decode(file_get_contents("./queries/$reportAlias.json"), true);
 			
 			if (json_last_error()) throw new Exception(json_last_error_msg());
@@ -35,6 +37,7 @@ class Report {
 		} catch (Exception $e) {
 			
 			$this->valid = false;
+			
 			$this->err = $e->getMessage();
 
 		}

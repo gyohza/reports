@@ -1,8 +1,8 @@
 <?php
 
-	require_once '../utils/arrayTools.php';
-	require_once '../utils/mysqlPDO.php';
 	require_once dirname(__FILE__) . "/classes/_loader.php";
+	require_once 'utils/arrayTools.php';
+	require_once 'utils/mysqlPDO.php';
 	
 	$mode = isset($_GET['mode']) ? trim ( $_GET['mode'] ) : "table";
 	$repAlias = isset($_GET['report']) ? trim($_GET['report']) : false;
@@ -71,6 +71,10 @@
 
 			}
 			
+		} else {
+
+			header('Location: /' . basename(getcwd()));
+
 		}
 		
 	}

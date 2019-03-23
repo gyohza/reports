@@ -86,15 +86,18 @@ class Browse extends HtmlContent {
                 border-color: var(--faint-valencia);
                 background-color: var(--valencia);
             }
+            .invisible {
+                display: none;
+            }
         </style>
         <script>
             function applyFilters() {
                 for (btn of document.getElementById('btnpane').getElementsByTagName('a')) {
                     let c = document.getElementById('category').value, k = document.getElementById('keyword').value, n = document.getElementById('name').value;
-                    btn.hidden = !(!(c.length || k.length || n.length) ^
+                    btn.classList.toggle('invisible', !(!(c.length || k.length || n.length) ^
                         (c.length && btn.dataset.category == c
                         || k.length && btn.classList.contains(k)
-                        || n.length && btn.dataset.name.includes(n)));
+                        || n.length && btn.dataset.name.includes(n))));
                 }
             }
         </script>

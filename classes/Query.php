@@ -38,14 +38,24 @@ class Query extends HtmlContent {
 		<form method="GET" action="../table/<?php echo $this->report->getAlias(); ?>">
 			<div>
 				<table>
-					<?php
-						echo $this->buildTable();
-					?>
-					<tr>
-						<td colspan="2">
-							<input type="submit" value="Gerar relatório"/>
-						</td>
-					</tr>
+					<thead>
+						<th>
+							Parâmetro
+						</th>
+						<th>
+							Valor
+						</th>
+					</thead>
+					<tbody>
+						<?php
+							echo $this->buildTable();
+						?>
+						<tr>
+							<td colspan="2">
+								<input type="submit" value="Gerar relatório"/>
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</form>

@@ -59,6 +59,7 @@
 			foreach ( $arr as $row ) {
 				
 				$output .= "<tr><td>" . implode('</td><td>', sortHeaders($row, $headers)) . "</td></tr>";
+
 			}
 			return "<table id='$id' class='$class' style='$style'> $output </tbody></table>";
 		} else {
