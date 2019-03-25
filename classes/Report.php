@@ -77,8 +77,6 @@ class Report {
 	}
 	
 	public function retrieveData() {
-			
-		$conns = json_decode(file_get_contents("./config/connections.json"), true);
 		
 		$mt = microtime(true);
 
@@ -91,6 +89,9 @@ class Report {
 		
 		// Creates the array that will be populated with query results
 		$items	= array();
+		
+		// Gets DB connections data
+		$conns = json_decode(file_get_contents("./config/connections.json"), true);
 		
 		// Loops through every query in the JSON file
 		foreach ( $this->meta['queries'] as $i => $q ) {
