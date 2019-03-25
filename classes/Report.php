@@ -44,36 +44,28 @@ class Report {
 
 	}
 	
-	public function getAlias() {
-		return $this->alias;
-	}
+	public function getAlias()			{ return $this->alias; }
 	
-	public function getName() {
-		return $this->name;
-	}
+	public function getName()			{ return $this->name; }
 	
-	public function getFingerprint() {
-		return $this->fingerprint;
-	}
+	public function getFingerprint()	{ return $this->fingerprint; }
 	
-	public function getLabel() {
-		return $this->label;
-	}
+	public function getLabel()			{ return $this->label; }
 	
-	public function isValid() {
-		return $this->valid;
-	}
+	public function isValid()			{ return $this->valid; }
 	
-	public function getErr() {
-		return $this->err;
-	}
+	public function getErr()			{ return $this->err; }
 
 	public function get($attrib) {
+
 		return isset($this->meta[$attrib]) ? $this->meta[$attrib] : null;
+
 	}
 
 	public function printMeta() {
+
 		print_r($this->meta);
+
 	}
 	
 	public function retrieveData() {
@@ -95,12 +87,6 @@ class Report {
 		
 		// Loops through every query in the JSON file
 		foreach ( $this->meta['queries'] as $i => $q ) {
-
-			$conndata	= $conns[$q['conn']];
-			$servername	= $conndata['servername'];
-			$username	= $conndata['username'];
-			$password	= $conndata['password'];
-			$database	= $conndata['database'];
 			
 			$query = "/* [ {$_SERVER['PHP_SELF']} - {$this->label} ] Requester IP: {$_SERVER['REMOTE_ADDR']} */" .	//
 				file_get_contents( "./queries/" . $q['query'] );
@@ -113,14 +99,17 @@ class Report {
 					
 			$rkey = $q['key'];
 			
+			$mysql = new MySQL($conns[$q['conn']]);
+
 			if ( $i ) {
 				
 				$items = array_combine( array_column($items, $rkey), array_values( $items ) );
-				$rows = runQuery( $servername, $database, $username, $password, $query, $params, array_keys($items) );
+				
+				$rows = $mysql->runQuery( $query, $params, array_keys($items) );
 				
 			} else {
 				
-				$rows = runQuery( $servername, $database, $username, $password, $query, $params, isset($_GET[$rkey]) ? explode( ",", $_GET[$rkey] ) : array() );
+				$rows = $mysql->runQuery( $query, $params, isset($_GET[$rkey]) ? explode( ",", $_GET[$rkey] ) : array() );
 				
 			}
 			

@@ -4,7 +4,7 @@ class MySQL extends PDO {
 
     public function __construct($conn) {
 
-        parent::__construct("mysql:host={$conn['servername']};dbname={$conn['dbname']};charset=latin1", $conn['username'], $conn['password']);
+        parent::__construct("mysql:host={$conn['servername']};dbname={$conn['database']};charset=latin1", $conn['username'], $conn['password']);
 
         $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -14,7 +14,7 @@ class MySQL extends PDO {
 
 		try {
 			
-			if ( count( array_filter($named_params) ) ){
+			if ( count( array_filter($named_params) ) ) {
 
 				foreach($named_params as $k => &$v){
 
@@ -30,7 +30,7 @@ class MySQL extends PDO {
 			
 			$stmt = $this->prepare($query);
 			
-			if ( count( array_filter($unnamed_params) ) ){
+			if ( count( array_filter($unnamed_params) ) ) {
 
                 $unnamed_params = explode(',', implode(',', $unnamed_params));
                 
@@ -38,7 +38,7 @@ class MySQL extends PDO {
                 
                 $stmt = $this->prepare($query);
                 
-				foreach($unnamed_params as $k => &$v){
+				foreach($unnamed_params as $k => &$v) {
 
                     $stmt->bindParam($k + 1, $v);
                     
