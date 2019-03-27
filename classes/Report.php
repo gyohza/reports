@@ -1,21 +1,15 @@
 <?php
 
-class Report {
+class Report
+{
 	
 	private $alias;
-	
 	private $name;
-
 	private $fingerprint;
-
 	private $label;
-	
 	private $valid;
-	
 	private $err;
-	
 	private $meta;
-
 	private $results;
 	
 	public function __construct($reportAlias) {
@@ -23,11 +17,9 @@ class Report {
 		try {
 			
 			if (!file_exists("./queries/$reportAlias.json")) throw new Exception('Report does not exist!');
-
 			$this->meta = json_decode(file_get_contents("./queries/$reportAlias.json"), true);
 			
 			if (json_last_error()) throw new Exception(json_last_error_msg());
-			
 			$this->alias = $reportAlias;
 
 			$this->name = $this->meta['name'];
@@ -44,36 +36,51 @@ class Report {
 
 	}
 	
-	public function getAlias()			{ return $this->alias; }
+	public function getAlias()
+	{
+		return $this->alias;
+	}
 	
-	public function getName()			{ return $this->name; }
+	public function getName()
+	{
+		return $this->name;
+	}
 	
-	public function getFingerprint()	{ return $this->fingerprint; }
+	public function getFingerprint()
+	{
+		return $this->fingerprint;
+	}
 	
-	public function getLabel()			{ return $this->label; }
+	public function getLabel()
+	{
+		return $this->label;
+	}
 	
-	public function isValid()			{ return $this->valid; }
+	public function isValid()
+	{
+		return $this->valid;
+	}
 	
-	public function getErr()			{ return $this->err; }
+	public function getErr()
+	{
+		return $this->err;
+	}
 
-	public function get($attrib) {
-
+	public function get($attrib)
+	{
 		return isset($this->meta[$attrib]) ? $this->meta[$attrib] : null;
-
 	}
 
-	public function printMeta() {
-
+	public function printMeta()
+	{
 		print_r($this->meta);
-
 	}
 	
-	public function retrieveData() {
+	public function retrieveData()
+	{
 		
 		$mt = microtime(true);
-
 		$this->fingerprint = str_pad( base_convert( round( ( $mt - floor($mt) ) * 10000000 ), 10, 36 ), 5, '0', STR_PAD_LEFT );
-		
 		$this->label = $this->name . " @ " . date_format( date_create(), "Y-m-d h-i-s" ) . " " . $this->fingerprint;
 		
 		// Defines the first key based on JSON's first query data
@@ -128,7 +135,7 @@ class Report {
 			}
 			
 			foreach ( $rows as $row ) {
-				if ( $i ){
+				if ( $i ) {
 					$items[$row[$rkey]] = array_merge( $items[$row[$rkey]], $row );
 
 					foreach ( $items[$row[$rkey]] as $k => $v ) {
@@ -141,18 +148,28 @@ class Report {
 			
 		}
 		
+		$headers = array_keys($items[key($items)]);
+
 		foreach ($items as $k => $v) {
+
+			uksort($v, function($a, $b) use ($headers) {
+				return array_search($a, $headers) - array_search($b, $headers);
+			});
+
 			unset($items[$k]);
+
 			foreach ($v as $header => $cell) {
 				$items[utf8_encode($k)][utf8_encode($header)] = utf8_encode($cell);
 			}
+
 		}
 
 		$this->results = $items;
 
 	}
 
-	public function getResults() {
+	public function getResults()
+	{
 
 		if (!isset($this->results)) $this->retrieveData();
 
@@ -161,5 +178,3 @@ class Report {
 	}
 
 }
-
-?>

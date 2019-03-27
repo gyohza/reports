@@ -1,12 +1,14 @@
 <?php
 
-class Results extends HtmlContent {
+class Results extends HtmlContent
+{
 	
 	private $report;
 	
 	private $items;
 
-	public function __construct($report) {
+	public function __construct($report)
+	{
 
 		if ($report instanceof Report) $this->report = $report;
 		else throw new RuntimeException("Not a valid Report instance.");
@@ -14,43 +16,63 @@ class Results extends HtmlContent {
 		$this->items = $report->getResults();
 		
 	}
-	
-	public function echoContent() {
-	?>
-	
-		<style>
 
+	public function assembleTbl()
+	{
+
+		$output = "";
+
+		if ( count($this->items) ) {
+			
+			$headers = array_keys($this->items[key($this->items)]);
+			
+			foreach ( $this->items as $row ) {
+				$output .= "<tr><td>" . implode('</td><td>', $row) . "</td></tr>";	
+			}
+
+			$output = "<table id='results'><thead><tr><th>"
+				. implode('</th><th>', $headers) .
+				"</th></tr></thead><tbody> $output </tbody></table>";
+
+		} else {
+
+			$output =  "<table id='results'></table><br/><p><em>No results to show.</em></p><br/>";
+
+		}
+
+		return $output;
+
+	}
+	
+	public function echoContent()
+	{
+	?>
+		<style>
 			#content {
 				width: unset;
 				max-width: 96vw !important;
 			}
-
 			#export {
 				position: fixed;
 				display: grid !important;
 				top: 20px !important;
 				right: 20px !important;
 			}
-
 			#export > * {
 				min-width: 0px;
 			}
-
 			#results {
 				overflow-x: auto;
 				max-height: calc(98vh - 150px);
 			}
-
 			#results > thead > tr > th {
 				background-color: var(--valencia);
 				position: sticky;
 				top: 2px;
 			}
-
 			#results > tbody {
 				overflow-y: auto;
 			}
-
 			#results > tbody > tr > td > table {
 				display: block;
 				margin: auto;
@@ -58,7 +80,6 @@ class Results extends HtmlContent {
 				visibility: hidden;
 				max-height: 10px;
 			}
-
 			#results > tbody > tr > td > table::before {
 				display: inline-block;
 				position: relative;
@@ -72,7 +93,6 @@ class Results extends HtmlContent {
 				height: 100%;
 				width: 20%;
 			}
-
 			#results > tbody > tr > td:not(.collapsed) {
 				max-width: none;
 			}
@@ -83,21 +103,17 @@ class Results extends HtmlContent {
 				visibility: visible !important;
 				max-height: none !important;
 			}
-
 			#results > tbody > tr > td:not(.collapsed) > table {
 				border: 3px dashed var(--valencia);
 				cursor: pointer;
 			}
-
 			#results > tbody > tr > td:not(.collapsed) > table::before {
 				display: none;
 			}
-
 			#results > tbody > tr:hover {
 				--opacity-level: 0.2;
 				background-color: var(--faint-valencia);
 			}
-			
 		</style>
 	
 		<form id="export">
@@ -139,7 +155,7 @@ class Results extends HtmlContent {
 						"<small>Relatório " . implode( " e ", array( strlen( $authors ) ? "criado por $authors" : null, strlen( $maintainers ) ? "mantido por $maintainers" : null)) . ".</small>"
 					);
 			
-			echo $credits . arrTbl(array_values($this->items), "results", "", "display: inline-block;");
+			echo $credits . $this->assembleTbl();
 			
 		?>
 		
@@ -156,5 +172,3 @@ class Results extends HtmlContent {
 	}
 	
 }
-
-?>

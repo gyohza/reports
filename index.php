@@ -1,7 +1,6 @@
 <?php
 
 	require_once dirname(__FILE__) . "/classes/_loader.php";
-	require_once 'utils/arrayTools.php';
 	
 	$mode = isset($_GET['mode']) ? trim ( $_GET['mode'] ) : "table";
 	$repAlias = isset($_GET['report']) ? trim($_GET['report']) : false;
@@ -15,7 +14,7 @@
 			"lang" => "pt"
 		));
 		
-		$browse->buildPage();
+		$browse->echoSelf();
 		
 	} else {
 		
@@ -30,7 +29,7 @@
 				"lang" => "pt"
 			));
 
-			$query->buildPage();
+			$query->echoSelf();
 
 		} else if ( $report->isValid() ) {
 			
@@ -38,25 +37,21 @@
 			
 			$json = json_encode( $items );
 
-			switch ( $mode ) {
+			switch ( strtolower($mode) ) {
 
 				case "json":
-					header ( 'Content-Type: application/json' );
-					echo $json;
+					(new Output($report))->toJSON();
 					break;
 
 				case "csv":
-					json2csv( $json, $reportId );
+					(new Output($report))->toCSV();
 					break;
 
 				case "xls":
-					header("Content-disposition: attachment; filename=$reportId.xls");
-					header("Content-Type: application/vnd.ms-excel; charset=utf-8");
-					
-					arrXls( array_values($items), false, $rdata );
+					(new Output($report))->toXLS();
 					break;
 
-				default:
+				case "table":
 					$itemCount = count($report->getResults());
 
 					$results = new HtmlDoc(array(
@@ -66,15 +61,18 @@
 						"lang" => "pt"
 					));
 
-					$results->buildPage();
+					$results->echoSelf();
+					break;
+					
+				default:
+					header('Location: /' . basename(getcwd()));
 
 			}
 			
 		} else {
-
+			
 			header('Location: /' . basename(getcwd()));
 
 		}
 		
 	}
-?>

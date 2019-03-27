@@ -1,6 +1,7 @@
 <?php
 
-class HtmlDoc {
+class HtmlDoc
+{
 
     private $content;
 
@@ -10,16 +11,17 @@ class HtmlDoc {
 
     private $lang;
 
-    public function buildPage() {
+    public function echoSelf()
+    {
         ?>
             <!DOCTYPE html>
-            <html lang="<?php echo $this->lang; ?>">
+            <html lang="<?= $this->lang ?>">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
                 <title>
-                    <?php echo $this->pageTitle; ?>
+                    <?= $this->pageTitle ?>
                 </title>
                 <link rel="stylesheet" type="text/css" href="/reports/style.css">
             </head>
@@ -27,11 +29,9 @@ class HtmlDoc {
                 <div id="bgoverlay"/></div>
                 <div id="content" style="text-align: center;">
                     <h1 id="pageHeader">
-                        <?php echo $this->pageHeaderTitle; ?>
+                        <?= $this->pageHeaderTitle ?>
                     </h1>
-                    <?php
-                        echo $this->content->echoContent();
-                    ?>
+                    <?= $this->content->echoContent() ?>
                 </div>
             </body>
             </html>
@@ -54,5 +54,3 @@ class HtmlDoc {
     }
 
 }
-
-?>

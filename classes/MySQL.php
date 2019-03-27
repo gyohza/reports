@@ -1,8 +1,10 @@
 <?php
 
-class MySQL extends PDO {
+class MySQL extends PDO
+{
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
 
         parent::__construct("mysql:host={$conn['servername']};dbname={$conn['database']};charset=latin1", $conn['username'], $conn['password']);
 
@@ -10,13 +12,14 @@ class MySQL extends PDO {
 
     }
 
-	function runQuery ( $query, $named_params = array(), $unnamed_params = array() ) {
+    function runQuery ( $query, $named_params = array(), $unnamed_params = array() )
+    {
 
 		try {
 			
 			if ( count( array_filter($named_params) ) ) {
 
-				foreach($named_params as $k => &$v){
+				foreach ($named_params as $k => &$v) {
 
                     $stmt = $this->prepare("SET @$k = :$k");
                     
@@ -67,5 +70,3 @@ class MySQL extends PDO {
 	}
 
 }
-
-?>

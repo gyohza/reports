@@ -1,12 +1,14 @@
 <?php
 
-class Browse extends HtmlContent {
+class Browse extends HtmlContent
+{
 
     private $reports;
 
     private $lists;
 
-    public function __construct() {
+    public function __construct()
+    {
                 
         $this->reports = array_filter(scandir("queries/"), function($v) { return preg_match("/^.+\.json$/", $v); });
 
@@ -18,7 +20,8 @@ class Browse extends HtmlContent {
 
     }
 
-    public function echoContent() {
+    public function echoContent()
+    {
     ?>
 
         <style>
@@ -150,5 +153,3 @@ class Browse extends HtmlContent {
     }
 
 }
-
-?>

@@ -1,17 +1,20 @@
 <?php
 
-class Query extends HtmlContent {
+class Query extends HtmlContent
+{
 	
 	private $report;
 
-	public function __construct($report) {
+	public function __construct($report)
+	{
 
 		if ($report instanceof Report) $this->report = $report;
 		else throw new RuntimeException("Not a valid Report instance.");
 
 	}
 	
-	public function buildTable() {
+	public function buildTable()
+	{
 		
 		$filteredParams = 
 			array_map(function($v) { return $v['params']; },
@@ -33,7 +36,8 @@ class Query extends HtmlContent {
 		
 	}
 
-	public function echoContent() {
+	public function echoContent()
+	{
 	?>
 		<form method="GET" action="../table/<?php echo $this->report->getAlias(); ?>" style="margin: auto;">
 			<div>
@@ -63,5 +67,3 @@ class Query extends HtmlContent {
 	}
 
 }
-
-?>
