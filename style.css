@@ -25,6 +25,8 @@ html {
 
 body {
 	text-align: center;
+	margin: 0px;
+	overflow-x: hidden;
 }
 
 #bgoverlay {
@@ -62,9 +64,7 @@ h1, small {
 	box-sizing: border-box;
 	padding: 50px;
 	height: 96vh;
-	width: 50%;
-	max-width: 900px;
-	min-width: 500px;
+	max-width: 54vw;
 	margin: auto;
 }
 

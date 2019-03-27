@@ -30,9 +30,9 @@ class Results extends HtmlContent
 				$output .= "<tr><td>" . implode('</td><td>', $row) . "</td></tr>";	
 			}
 
-			$output = "<table id='results'><thead><tr><th>"
+			$output = "<div id='tblContainer'><table id='results'><thead><tr><th>"
 				. implode('</th><th>', $headers) .
-				"</th></tr></thead><tbody> $output </tbody></table>";
+				"</th></tr></thead><tbody> $output </tbody></table></div>";
 
 		} else {
 
@@ -49,8 +49,7 @@ class Results extends HtmlContent
 	?>
 		<style>
 			#content {
-				width: unset;
-				max-width: 96vw !important;
+				max-width: 96vw;
 			}
 			#export {
 				position: fixed;
@@ -61,9 +60,12 @@ class Results extends HtmlContent
 			#export > * {
 				min-width: 0px;
 			}
+			#tblContainer {
+				box-sizing: border-box;
+				overflow: auto;
+			}
 			#results {
-				overflow-x: auto;
-				max-height: calc(98vh - 150px);
+				margin: auto !important;
 			}
 			#results > thead > tr > th {
 				background-color: var(--valencia);
