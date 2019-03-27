@@ -15,5 +15,3 @@ set_error_handler(function($num, $msg, $file, $line) {
 spl_autoload_register(function($class) {
 	require_once dirname(__FILE__) . "/$class.php";
 });
-
-?>
