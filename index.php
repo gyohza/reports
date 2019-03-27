@@ -1,5 +1,5 @@
 <?php
-
+	
 	require_once dirname(__FILE__) . "/classes/_loader.php";
 	
 	$mode = isset($_GET['mode']) ? trim ( $_GET['mode'] ) : "table";
@@ -63,7 +63,7 @@
 
 					$results->echoSelf();
 					break;
-					
+
 				default:
 					header('Location: /' . basename(getcwd()));
 

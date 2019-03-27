@@ -148,7 +148,7 @@ class Report
 			
 		}
 		
-		$headers = array_keys($items[key($items)]);
+		$headers = count($items) ? array_keys($items[key($items)]) : array();
 
 		foreach ($items as $k => $v) {
 

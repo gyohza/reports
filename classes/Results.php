@@ -36,7 +36,7 @@ class Results extends HtmlContent
 
 		} else {
 
-			$output =  "<table id='results'></table><br/><p><em>No results to show.</em></p><br/>";
+			$output =  "<p><em>No results to show.</em></p>";
 
 		}
 
