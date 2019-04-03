@@ -12,14 +12,50 @@ class Report
 	private $meta;
 	private $results;
 	
-	public function __construct($reportAlias) {
+	public function __construct($reportAlias)
+	{
 		
 		try {
 			
+			// Checks if provided alias matches an existing report.
 			if (!file_exists("./queries/$reportAlias.json")) throw new Exception('Report does not exist!');
 			$this->meta = json_decode(file_get_contents("./queries/$reportAlias.json"), true);
 			
-			if (json_last_error()) throw new Exception(json_last_error_msg());
+			// Throws an error if JSON parsing unsuccessful.
+			if (json_last_error()) throw new RuntimeException(json_last_error_msg());
+
+
+			/********** USER AUTHENTICATION **********/
+
+			// Checks if client is localhost - if not, checks if the reports has a whitelist and it is populated.
+			if ($_SERVER['REMOTE_ADDR'] !== "::1" && isset($this->meta['whitelist']) && count($this->meta['whitelist'])) {
+
+				// Evaluates if there is an API key at all.
+				if (!isset($_GET['apiKey'])) throw new RuntimeException("No apiKey parameter!\n\nThis is a protected report and no API key was supplied.");
+				
+				$apiKey = $_GET['apiKey'];
+
+				// Evaluates if the supplied key matches an existing .json file.
+				if (!file_exists("./clients/$apiKey.json")) throw new RuntimeException("Invalid API key provided.");
+
+				// Loads client's metadata.
+				$clientData = json_decode(file_get_contents("./clients/$apiKey.json"), true);
+
+				// Checks if the API key is bound to predetermined IPs.
+				if (isset($clientData['hosts'])) {
+
+					// Tests if client matches allowed hosts. General digit wildcards (*) are allowed (e.g.: 172.22.*.*).
+					$validHost = array_filter($clientData['hosts'], function($v) {
+						return preg_match('/^' . str_replace("*", "\d{1,3}", str_replace('.', '\.', $v)) . '$/', $_SERVER['REMOTE_ADDR']);
+					});
+
+					// If filtered array has no matches, blocks client access to the report.
+					if (!$validHost) throw new RuntimeException("Client IP's doesn't match API key's allowed hosts list.");
+
+				}
+
+			}
+
 			$this->alias = $reportAlias;
 
 			$this->name = $this->meta['name'];
@@ -136,14 +172,14 @@ class Report
 			
 			foreach ( $rows as $row ) {
 				if ( $i ) {
+
 					$items[$row[$rkey]] = array_merge( $items[$row[$rkey]], $row );
 
 					foreach ( $items[$row[$rkey]] as $k => $v ) {
 						if ( !strlen( $v ) && isset( $row[$k] ) ) $items[$row[$rkey]][$k] = $row[$k];
 					}
-				}
-				else
-					$items[$row[$rkey]] = $row;
+
+				} else	$items[$row[$rkey]] = $row;
 			}
 			
 		}

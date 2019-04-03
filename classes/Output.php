@@ -25,7 +25,8 @@ class Output
 
 	}
 
-	public function toJSON() {
+	public function toJSON()
+	{
 		
 		header ( 'Content-Type: application/json' );
 
