@@ -167,7 +167,7 @@ Clicking a report will redirect the user to its **`query/`** page. Check out mor
 #### `http`://`yourdomain.com`/`reports`/`[mode/]` `reportAlias` `[?apiKey=YOUR_KEY]` `[&param1=val1]` `[&paramN=valN]` `[...]`
 
 #### <span id="TOC_2_1_1">URI breakdown</span>
-Some of these are so obvious commonplace that wouldn't even need mention, but I'll include them just in case:
+Some of these are so obvious and commonplace that wouldn't even need mention, but I'll include them just in case:
 1. `http` - Your application protocol. Usually `http` or `https`;
 2. `yourdomain.com` - Usually `localhost` when testing from your own machine, an IP or DNS;
 3. `reports` - Name of the project's directory under your `/var/www/html/` or `htdocs/` directory;
