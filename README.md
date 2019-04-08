@@ -193,12 +193,12 @@ Some of these are so obvious and commonplace that wouldn't even need mention, bu
 -->
 
 ## <span id="TOC_4">Development Status</span>
-This project was started just as a small local solution and steadily grew into something else. There's still ongoing developments, lots of ideas to build upon and I'm still very open to suggestions.
+This project was started just as a small local solution and steadily grew into something else. There's still ongoing development, lots of ideas to build upon and I'm still very open to suggestions.
 
 If you have any complaints or suggestions, please be sure to drop by the Issues section and leave me some notes.
 
 ### <span id="TOC_4_1">Future</span>
-* There have been complaints about the name of this project - "reports" is "uninspiring" - but no suggestions were made. I know for a fact that I suck at naming things, but it would be lovely if there were an early species of some sort that I could name after. Species such as *Tiktaalik*, *Acanthostega*, coelacanths, *Dunkleosteus*, *Ambulocetus* are of particular interest but obviously a mouthful, so maybe contracting the names would work, but potentially lose their meaning. [*Pikaia*](https://en.wikipedia.org/wiki/Pikaia) (an early [Burgess Shale](https://en.wikipedia.org/wiki/Burgess_Shale) [chordate](https://en.wikipedia.org/wiki/Chordate)) bears a compact and somewhat appealing name. But then again... does the name have to reflect the application's nature? I don't know.
+* There have been complaints about the name of this project - "reports" is "uninspiring" - but no suggestions were made. I know for a fact that I suck at naming things, but it would be lovely if there were an early species of some sort that I could name after. Species such as *Tiktaalik*, *Acanthostega*, coelacanths, *Dunkleosteus*, *Ambulocetus* are of particular interest but obviously a mouthful, so maybe contracting the names would work, but potentially lose their meaning in the process. [*Pikaia*](https://en.wikipedia.org/wiki/Pikaia) (an early [Burgess Shale](https://en.wikipedia.org/wiki/Burgess_Shale) [chordate](https://en.wikipedia.org/wiki/Chordate)) bears a compact and somewhat appealing name... definitely a candidate. But then again... does the name have to reflect the application's nature? I really don't know.
 * API keys have no daily/weekly/monthly limits (yet). I'll work on them as soon as I can;
 * Creators and maintainers should be contacted by email when their name is clicked at `reports/table/reportAlias`. It does work... but it pops up a gmail tab instead of the usual `mailto:` protocol. I did it that way because my company uses G Suite and only a few people there had email clients installed. I will adapt it in the near future;
 * I know XLS sucks and I'll add XLSX support soon. I'm gonna dig through PHP Spreadsheets documentation to see if there's any difference in the XLSX and XLS class structures and adapt my code if needed.
@@ -206,6 +206,6 @@ If you have any complaints or suggestions, please be sure to drop by the Issues 
 ## <span id="TOC_5">Disclaimer</span>
 I've been coding for quite a few years now, but haven't been too hot on git until very recently. This is officially my first public repo - I don't expect it to garner any attention at all because I suck at advertising, but I'm quite sure several sneaky mistakes and poor choices are out there to be found. As aforementioned, you're welcome to [**file an issue**](https://github.com/gyohza/reports/issues). 
 
-I know this is cliché to the max, but I cannot be held responsible for anything... blah blah blah. Do not include this in life-supporting devices and you'll always be able to perform a rollback. Use it with your own discretion.
+I know this is cliché to the max, but I cannot be held responsible for anything... blah blah blah. Do not include this in life-supporting devices and you'll always be able to perform a rollback. Use it at your own discretion.
 
 Also please don't sue me - I don't do plastic straws. :)
