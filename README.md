@@ -2,7 +2,7 @@
 
 *<h4 align="center">Simple implementation of MySQL query browser, viewer and API.</h4>*
 
-Have you always wondered why aren't building APIs or customizable reports not as simple as building a MySQL query? By writing a query and configuring a simple JSON file, you can build an exportable table / API that is ready to use.
+Have you always wondered why aren't building APIs or customizable reports as simple as building a MySQL query? By writing a query and configuring a simple JSON file, you can build an exportable table / API on the fly that is ready to use.
 
 Queries and their result sets are collectively called **reports** within this project.
 
@@ -64,11 +64,9 @@ As you will see below, a report may or may not be protected (i.e. a `whitelist` 
 **<span id="NOTE_1_2_roles">[1]</span>** *`roles` are completely abstract - meaning they do not exist anywhere as true entities. If a role exists in both `queries/some_report.json` and `clients/0123456789ABCDEF.json`, it means any one client providing the `0123456789ABCDEF` key will be able to successfully access report `some_report`.*
 
 #### <span id="TOC_1_2_1">FILE: `clients/SOME_API_KEY_123456.json`</span>
-In addition to `roles`, one may set IPs (`hosts`) allowed to use a specific API_KEY. Keep in mind that if a client must access reports from a *remote* network, you will have to whitelist their **public** IP.
+In addition to `roles`, one may set IPs (`hosts`) allowed to use a specific API_KEY. Keep in mind that if a client must access reports from a *remote* network, you would have to whitelist their **public** IP. **Understand the implications before doing so**. Consider leaving it without a `hosts` list - if it is missing, then every IP will be allowed to use this API key.
 
-If the `"hosts"` attribute is missing, then every IP will be allowed to use this API key, in which case you should keep it as secret as possible.
-
-A hypothetical `SOME_API_KEY_123456.json` could be as follows: 
+A hypothetical `SOME_API_KEY_123456.json` could look like this: 
 ```json
 {
 
@@ -201,6 +199,7 @@ If you have any complaints or suggestions, please be sure to drop by the Issues 
 
 ### <span id="TOC_4_1">Future</span>
 * There have been complaints about the name of this project - "reports" is "uninspiring" - but no suggestions were made. I know for a fact that I suck at naming things, but it would be lovely if there were an early species of some sort that I could name after. Species such as *Tiktaalik*, *Acanthostega*, coelacanths, *Dunkleosteus*, *Ambulocetus* are of particular interest but obviously a mouthful, so maybe contracting the names would work, but potentially lose their meaning. [*Pikaia*](https://en.wikipedia.org/wiki/Pikaia) (an early [Burgess Shale](https://en.wikipedia.org/wiki/Burgess_Shale) [chordate](https://en.wikipedia.org/wiki/Chordate)) bears a compact and somewhat appealing name. But then again... does the name have to reflect the application's nature? I don't know.
+* API keys have no daily/weekly/monthly limits (yet). I'll work on them as soon as I can;
 * Creators and maintainers should be contacted by email when their name is clicked at `reports/table/reportAlias`. It does work... but it pops up a gmail tab instead of the usual `mailto:` protocol. I did it that way because my company uses G Suite and only a few people there had email clients installed. I will adapt it in the near future;
 * I know XLS sucks and I'll add XLSX support soon. I'm gonna dig through PHP Spreadsheets documentation to see if there's any difference in the XLSX and XLS class structures and adapt my code if needed.
 
