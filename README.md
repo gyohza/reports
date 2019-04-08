@@ -14,7 +14,7 @@ Queries and their result sets are collectively called **reports** within this pr
 		1. [FILE: `clients/SOME_API_KEY_123456.json`](#TOC_1_2_1)
 	3. [Report configuration files](#TOC_1_3)
 		1. [FILE: `queries/report_alias.json`](#TOC_1_3_1)
-		2. [FILE: `myFirstQuery.sql`](#TOC_1_3_2)
+		2. [FILE: `queries/myFirstQuery.sql`](#TOC_1_3_2)
 2. [Basic Usage](#TOC_2)
 	1. [URL structure](#TOC_2_1)
 		2. [URL breakdown](#TOC_2_1_1)
