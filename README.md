@@ -17,7 +17,7 @@ Queries and their result sets are collectively called **reports** within this pr
 		2. [FILE: `queries/myFirstQuery.sql`](#TOC_1_3_2)
 2. [Basic Usage](#TOC_2)
 	1. [URL structure](#TOC_2_1)
-		2. [URL breakdown](#TOC_2_1_1)
+		1. [URL breakdown](#TOC_2_1_1)
 3. [Further Trickery](#TOC_3)
 4. [Development Status](#TOC_4)
 	1. [Future](#TOC_4_1)
