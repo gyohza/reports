@@ -176,7 +176,7 @@ Some of these are so obvious and commonplace that wouldn't even need mention, bu
 	* `table/` - Displays query results on screen (either using GET parameters or default parameters if present);
 	* `json/` - Converts results into a `.json` file. **Note:** the JSON file will be an associative array, whose keys are its latest query's defined key column and whose values will be the result set rows;
 	* `csv/` - Converts results into a `.csv` file. It'll be a standard comma-separated file, with `sep=,` header to avoid conflicts with countries that use [decimal comma](https://en.wikipedia.org/wiki/Decimal_separator#Countries_using_Arabic_numerals_with_decimal_comma).
-	* `xls` - Converts results into a `.xls` file.
+	* `xls/` - Converts results into a `.xls` file.
 5. `reportAlias` - Your report's alias (AKA name of its `.json` file, file extension excluded);
 6. `?apiKey=YOUR_KEY`[<sup>[1]</sup>](#NOTE_2_1_1_getparams) - API key, in which `YOUR_KEY` must be the name (file extension excluded) of an existing `.json` file under `clients/`;
 7. `[&param1=val1]`, `[&paramN=valN]`, ...[<sup>[1]</sup>](#NOTE_2_1_1_getparams) - Parameters that will be provided as variables to the report's query.
