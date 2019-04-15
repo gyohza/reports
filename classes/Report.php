@@ -3,6 +3,7 @@
 class Report
 {
 	
+	private $client;
 	private $alias;
 	private $name;
 	private $fingerprint;
@@ -30,29 +31,7 @@ class Report
 			// Checks if client is localhost - if not, checks if the reports has a whitelist and it is populated.
 			if ($_SERVER['REMOTE_ADDR'] !== "::1" && isset($this->meta['whitelist']) && count($this->meta['whitelist'])) {
 
-				// Evaluates if there is an API key at all.
-				if (!isset($_GET['apiKey'])) throw new RuntimeException("No apiKey parameter!\n\nThis is a protected report and no API key was supplied.");
-				
-				$apiKey = $_GET['apiKey'];
-
-				// Evaluates if the supplied key matches an existing .json file.
-				if (!file_exists("./clients/$apiKey.json")) throw new RuntimeException("Invalid API key provided.");
-
-				// Loads client's metadata.
-				$clientData = json_decode(file_get_contents("./clients/$apiKey.json"), true);
-
-				// Checks if the API key is bound to predetermined IPs.
-				if (isset($clientData['hosts'])) {
-
-					// Tests if client matches allowed hosts. General digit wildcards (*) are allowed (e.g.: 172.22.*.*).
-					$validHost = array_filter($clientData['hosts'], function($v) {
-						return preg_match('/^' . str_replace("*", "\d{1,3}", str_replace('.', '\.', $v)) . '$/', $_SERVER['REMOTE_ADDR']);
-					});
-
-					// If filtered array has no matches, blocks client access to the report.
-					if (!$validHost) throw new RuntimeException("Client IP's doesn't match API key's allowed hosts list.");
-
-				}
+				$this->client = new Client($_GET['apiKey'], $this->meta['whitelist'], $_SERVER['REMOTE_ADDR']);
 
 			}
 
@@ -144,6 +123,12 @@ class Report
 			
 			$mysql = new MySQL($conns[$q['conn']]);
 
+			$presets = isset($q['presets']) ? $q['presets'] : array();
+
+			foreach ( $presets as $k => $v ) {
+				$mysql->query("set $k = $v");
+			}
+
 			if ( $i ) {
 				
 				$items = array_combine( array_column($items, $rkey), array_values( $items ) );
@@ -155,7 +140,7 @@ class Report
 				$rows = $mysql->runQuery( $query, $params, isset($_GET[$rkey]) ? explode( ",", $_GET[$rkey] ) : array() );
 				
 			}
-			
+
 			foreach ( $items as $k => $v ) {
 			
 				$items[$k] = array_merge( array_fill_keys(array_keys($rows[0]), null), $v );
@@ -168,6 +153,7 @@ class Report
 					}
 					unset($items[$k]);
 				}
+				
 			}
 			
 			foreach ( $rows as $row ) {

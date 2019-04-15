@@ -44,6 +44,23 @@ body {
 	z-index: -1;
 }
 
+#home {
+	position: fixed;
+	top: 20px;
+	left: -5px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border-color: var(--faint-valencia);
+	background-color: var(--valencia);
+	opacity: 0.9;
+	transition: padding 0.3s, opacity 0.3s;
+}
+
+#home:hover {
+	opacity: 1;
+	padding-left: 25px;
+}
+
 ::selection {
 	color: #fff;
 	background-color: var(--faint-sky);
@@ -56,6 +73,16 @@ body {
 h1, small {
 	color: var(--wisp);
 	text-shadow: 3px 3px 2px var(--russian);
+}
+
+code {
+	font-family: Consolas, Courier, monospace;
+	color: #222e;
+	background-color: #eee;
+	padding: 0px 3px;
+	border: 1px solid #2224;
+	border-radius: 4px;
+	text-shadow: 1px 1px 1px #2224;
 }
 
 #content {
@@ -107,26 +134,8 @@ button, input[type='submit'] {
 	cursor: pointer;
 	color: var(--wisp);
 	background-color: var(--valencia);
-	border-color: var(--faint-valencia);
-}
-
-input[name='mode'] {
-	opacity: 0.5;
-	cursor: pointer;
-	transform: none;
-	border-color: var(--faint-valencia);
-	border-radius: 5px;
-	margin: 2px;
-	background-color: var(--valencia);
-	box-shadow: none;
-	transition: transform 0.2s, color 0.2s, opacity 0.2s;
-	width: 90px;
-}
-
-input[name='mode']:hover {
-	color: #fff;
-	opacity: 1;
-	transform: scale(1.05, 1.05);
+	border: 2px outset var(--faint-valencia);
+	border-radius: 2px;
 }
 
 a {

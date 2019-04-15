@@ -53,12 +53,30 @@ class Results extends HtmlContent
 			}
 			#export {
 				position: fixed;
+				margin: 0px !important;
 				display: grid !important;
 				top: 20px !important;
 				right: 20px !important;
 			}
 			#export > * {
 				min-width: 0px;
+			}
+			input[name='mode'] {
+				opacity: 0.9;
+				cursor: pointer;
+				transform: none;
+				border-color: var(--faint-valencia);
+				border-radius: 5px;
+				margin: 2px;
+				background-color: var(--valencia);
+				box-shadow: none;
+				transition: transform 0.2s, color 0.2s, opacity 0.2s;
+				width: 90px;
+			}
+			input[name='mode']:hover {
+				color: #fff;
+				opacity: 1;
+				transform: scale(1.05, 1.05);
 			}
 			#tblContainer {
 				box-sizing: border-box;
@@ -130,6 +148,7 @@ class Results extends HtmlContent
 		?>
 			<input name="mode" type="submit" value="xls"/>
 			<input name="mode" type="submit" value="csv"/>
+			<input type="hidden" name="apiKey" value="<?= (isset($_GET['apiKey']) ? $_GET['apiKey'] : '' ) ?>" />
 		</form>
 
 		<?php

@@ -51,9 +51,7 @@ class Query extends HtmlContent
 						</th>
 					</thead>
 					<tbody>
-						<?php
-							echo $this->buildTable();
-						?>
+						<?= $this->buildTable() ?>
 						<tr>
 							<td colspan="2">
 								<input type="submit" value="Gerar relatório"/>
@@ -62,6 +60,7 @@ class Query extends HtmlContent
 					</tbody>
 				</table>
 			</div>
+			<input type="hidden" name="apiKey" value="<?= (isset($_GET['apiKey']) ? $_GET['apiKey'] : '' ) ?>" />
 		</form>
 	<?php
 	}

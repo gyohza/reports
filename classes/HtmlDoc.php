@@ -27,6 +27,7 @@ class HtmlDoc
             </head>
             <body>
                 <div id="bgoverlay"/></div>
+                <a id="home" href="/<?= basename(getcwd())?>"><?= basename(getcwd())?></a>
                 <div id="content" style="text-align: center;">
                     <h1 id="pageHeader">
                         <?= $this->pageHeaderTitle ?>

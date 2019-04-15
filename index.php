@@ -70,8 +70,15 @@
 			}
 			
 		} else {
-			
-			header('Location: /' . basename(getcwd()));
+
+			$error = new HtmlDoc(array(
+				"content" => new Error($report),
+				"pageTitle" => "Oh, noes!",
+				"pageHeaderTitle" => "Oopsie!",
+				"lang" => "pt"
+			));
+
+			$error->echoSelf();
 
 		}
 		
