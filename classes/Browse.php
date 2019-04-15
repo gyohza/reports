@@ -174,7 +174,7 @@ class Browse extends HtmlContent
         </form>
         <script>
             function applyFilters() {
-                for (btn of document.getElementById('btnpane').getElementsByTagName('a')) {
+                for (btn of document.getElementById('btnpane').getElementsByTagName('button')) {
                     let c = document.getElementById('category').value, k = document.getElementById('keyword').value, n = document.getElementById('name').value;
                     btn.classList.toggle('invisible', !(!(c.length || k.length || n.length) ^
                         (c.length && btn.dataset.category == c
