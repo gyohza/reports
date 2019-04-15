@@ -72,7 +72,7 @@
 		} else {
 
 			$error = new HtmlDoc(array(
-				"content" => new Error($report),
+				"content" => new ErrScreen($report),
 				"pageTitle" => "Oh, noes!",
 				"pageHeaderTitle" => "Oopsie!",
 				"lang" => "pt"

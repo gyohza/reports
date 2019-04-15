@@ -28,9 +28,9 @@ class Report
 
 			/********** USER AUTHENTICATION **********/
 
-			// Checks if client is localhost - if not, checks if the reports has a whitelist and it is populated.
+			// Checks if client is localhost - if not, checks if the report has a whitelist and it is populated.
 			if ($_SERVER['REMOTE_ADDR'] !== "::1" && isset($this->meta['whitelist']) && count($this->meta['whitelist'])) {
-
+				
 				$this->client = new Client($_GET['apiKey'], $this->meta['whitelist'], $_SERVER['REMOTE_ADDR']);
 
 			}
@@ -153,7 +153,7 @@ class Report
 					}
 					unset($items[$k]);
 				}
-				
+
 			}
 			
 			foreach ( $rows as $row ) {
