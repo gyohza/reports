@@ -146,8 +146,9 @@ class Results extends HtmlContent
 				}
 			}
 		?>
-			<input name="mode" type="submit" value="xls"/>
+			<input name="mode" type="submit" value="xlsx"/>
 			<input name="mode" type="submit" value="csv"/>
+			<input name="mode" type="submit" value="txt"/>
 			<input type="hidden" name="apiKey" value="<?= (isset($_GET['apiKey']) ? $_GET['apiKey'] : '' ) ?>" />
 		</form>
 

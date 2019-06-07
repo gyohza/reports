@@ -47,8 +47,12 @@
 					(new Output($report))->toCSV();
 					break;
 
-				case "xls":
-					(new Output($report))->toXLS();
+				case "txt":
+					(new Output($report))->toTXT();
+					break;
+
+				case "xlsx":
+					(new Output($report))->toXLSX();
 					break;
 
 				case "table":
