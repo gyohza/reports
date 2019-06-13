@@ -135,7 +135,10 @@ class Results extends HtmlContent
 				background-color: var(--faint-valencia);
 			}
 		</style>
-	
+		<div class="left" id="customize" style="--ind: 1;">
+			<a style="background-image: url(/<?= basename(getcwd())?>/img/baseline_search_black_36dp.png);"
+				href="/<?= basename(getcwd()) . '/query/' . $this->report->getAlias() ?>">Refazer pesquisa</a>
+		</div>
 		<form id="export">
 		<?php
 			foreach ( $this->report->get('queries') as $k => $v ) {

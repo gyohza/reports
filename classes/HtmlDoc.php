@@ -23,11 +23,14 @@ class HtmlDoc
                 <title>
                     <?= $this->pageTitle ?>
                 </title>
-                <link rel="stylesheet" type="text/css" href="/reports/style.css">
+                <link rel="stylesheet" type="text/css" href="/<?= basename(getcwd())?>/style.css">
             </head>
             <body>
                 <div id="bgoverlay"/></div>
-                <a id="home" href="/<?= basename(getcwd())?>"><?= basename(getcwd())?></a>
+                <div class="left" id="home" style="--ind: 0;">
+                    <a style="background-image: url(/<?= basename(getcwd())?>/img/baseline_home_black_36dp.png);"
+                        href="/<?= basename(getcwd())?>"><?= basename(getcwd())?></a>
+                </div>
                 <div id="content" style="text-align: center;">
                     <h1 id="pageHeader">
                         <?= $this->pageHeaderTitle ?>

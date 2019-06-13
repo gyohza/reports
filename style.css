@@ -44,19 +44,30 @@ body {
 	z-index: -1;
 }
 
-#home {
+.left {
 	position: fixed;
-	top: 20px;
+	display: table;
+	top: calc(var(--ind) * 32px + 20px);
 	left: -5px;
-	padding: 10px 20px;
+}
+
+.left > a {
+	display: table-cell;
+	vertical-align: middle;
+	width: 80px;
+	word-wrap: break-word;
+	height: 30px;
+	padding: 0px 20px;
 	border-radius: 5px;
 	border-color: var(--faint-valencia);
+	background-position: right;
+	background-repeat: no-repeat;
 	background-color: var(--valencia);
 	opacity: 0.9;
 	transition: padding 0.3s, opacity 0.3s;
 }
 
-#home:hover {
+.left > a:hover {
 	opacity: 1;
 	padding-left: 25px;
 }
