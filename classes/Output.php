@@ -64,12 +64,10 @@ class Output
 	public function toTXT( $filename = "", $savepath = "" )
 	{
 
-		header("Content-type: text/plain");
+		header("Content-type: text/plain; charset=utf-8");
 		header("Content-Disposition: attachment; filename=" . (
 			strlen( $filename = trim($filename) ) ? $filename : date( "Y-m-d_H-i-s_" ) . sha1( $_SERVER['REMOTE_ADDR'] . time() )
 		) . ".txt");
-		header("Pragma: no-cache");
-		header("Expires: 0");
 		
 		$this->items;
 		
