@@ -37,6 +37,7 @@ class HtmlDoc
                     </h1>
                     <?= $this->content->echoContent() ?>
                 </div>
+                <script src="/<?= basename(getcwd())?>/js/k.min.js"></script>
             </body>
             </html>
         <?php
