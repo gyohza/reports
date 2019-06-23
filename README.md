@@ -135,7 +135,7 @@ In this example, `report_alias` is the [report's identifier](#TOC_2_1_1) in its 
 
 If you wish to make your report listed in the application's home screen, set `"indexed": true`.
 
-***Note:** the `key` attribute inside each query **must** be provided. It should be a result column from the query which will work as a unique identifier. **In other words, no duplicates will be allowed or they will be truncated!***
+***Note:** the `key` attribute inside each query **must** be provided. It should be a result column from the query which will work as a unique identifier. **i.e.: ensure that there are no duplicates, or they will be truncated!***
 
 #### <span id="TOC_1_3_2">FILE: `queries/myFirstQuery.sql`</span>
 This can be any query - with the added option to give it preset parameters. These parameters **must** be declared in `report_alias.json queries > params`. It is declared as a `"param": "value"` pair, where `"param"` will be set as a variable inside the `.sql` file and `"value"` is the param's default value in case none is provided.
