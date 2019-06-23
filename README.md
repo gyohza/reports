@@ -2,7 +2,7 @@
 
 *<h4 align="center">Simple implementation of MySQL query browser, viewer and API.</h4>*
 
-Have you always wondered why aren't building APIs or customizable reports as simple as building a MySQL query? By writing a query and configuring a simple JSON file, you can build an exportable table / API on the fly that is ready to use.
+Shouldn't building APIs or customizable reports be as simple as building a MySQL query? Write a query and set up a simple JSON file and you have a customizable, exportable table / API on the fly that can be used or viewed in less than a jiff.
 
 Queries and their result sets are collectively called **reports** within this project.
 
