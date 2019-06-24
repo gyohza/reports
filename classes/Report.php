@@ -12,6 +12,7 @@ class Report
 	private $err;
 	private $meta;
 	private $results;
+	private $params;
 	
 	public function __construct($reportAlias)
 	{
@@ -89,6 +90,18 @@ class Report
 	public function printMeta()
 	{
 		print_r($this->meta);
+	}
+
+	public function getParams()
+	{
+		return $this->params ? $this->params : $this->params = array_map(
+			function($v) {
+				return $v['params'];
+			},
+			array_filter($this->meta['queries'], function($q) {
+				return isset($q['params']);
+			})
+		);
 	}
 	
 	public function retrieveData()

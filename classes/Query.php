@@ -16,14 +16,7 @@ class Query extends HtmlContent
 	public function buildTable()
 	{
 		
-		$filteredParams = 
-			array_map(function($v) { return $v['params']; },
-				array_filter($this->report->get('queries'), function($q) {
-					return isset($q['params']);
-				})
-			);
-
-		if (!count($filteredParams)) return "";
+		$filteredParams = $this->report->getParams();
 
 		$params = array_merge(...$filteredParams);
 		

@@ -22,6 +22,8 @@
 		
 		if ( $mode == 'query' && $report->isValid() ) {
 
+			if (!count($report->getParams())) header('Location: /' . basename(getcwd()) . '/table/' . $report->getAlias());
+
 			$query = new HtmlDoc(array(
 				"content" => new Query($report),
 				"pageTitle" => $report->getName(),
