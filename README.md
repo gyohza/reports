@@ -199,7 +199,7 @@ If you have any complaints or suggestions, please be sure to drop by the Issues 
 
 ### <span id="TOC_4_1">Future</span>
 * There have been complaints about the name of this project - "reports" is "uninspiring" - but no suggestions were made. I know for a fact that I suck at naming things, but it would be lovely if there were an early species of some sort that I could name after. Species such as *Tiktaalik*, *Acanthostega*, coelacanths, *Dunkleosteus*, *Ambulocetus* are of particular interest but obviously a mouthful, so maybe contracting the names would work, but potentially lose their meaning in the process. [*Pikaia*](https://en.wikipedia.org/wiki/Pikaia) (an early [Burgess Shale](https://en.wikipedia.org/wiki/Burgess_Shale) [chordate](https://en.wikipedia.org/wiki/Chordate)) bears a compact and somewhat appealing name... definitely a candidate. But then again... does the name have to reflect the application's nature? I really don't know.
-* API keys have no daily/weekly/monthly limits (yet). I'll work on them as soon as I can;
+* ~~API keys have no daily/weekly/monthly limits (yet). I'll work on them as soon as I can~~ **actually, they do, now.** More on that soon;
 * Creators and maintainers should be contacted by email when their name is clicked at `reports/table/reportAlias`. It does work... but it pops up a gmail tab instead of the usual `mailto:` protocol. I did it that way because my company uses G Suite and only a few people there had email clients installed. I will adapt it in the near future;
 * I know XLS sucks and I'll add XLSX support soon. I'm gonna dig through PHP Spreadsheets documentation to see if there's any difference in the XLSX and XLS class structures and adapt my code if needed.
 
