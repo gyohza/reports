@@ -2,7 +2,7 @@
 	
 	require_once dirname(__FILE__) . "/classes/_loader.php";
 	
-	$mode = isset($_GET['mode']) ? trim ( $_GET['mode'] ) : "table";
+	$mode = isset($_GET['mode']) ? trim(strtolower($_GET['mode'])) : "table";
 	$repAlias = isset($_GET['report']) ? trim($_GET['report']) : false;
 	
 	if (!$repAlias) {
@@ -37,9 +37,9 @@
 			
 			$items = $report->getResults();
 			
-			$json = json_encode( $items );
+			$json = json_encode($items);
 
-			switch ( strtolower($mode) ) {
+			switch ($mode) {
 
 				case "json":
 					(new Output($report))->toJSON();
@@ -76,6 +76,18 @@
 			}
 			
 		} else {
+
+			if ($mode == 'json') {
+				
+				header ( 'Content-Type: application/json' );
+
+				echo json_encode(array(
+					"error" => $report->getErr()
+				), JSON_PRETTY_PRINT);
+
+				die();
+
+			}
 
 			$error = new HtmlDoc(array(
 				"content" => new ErrScreen($report),

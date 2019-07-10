@@ -19,10 +19,25 @@ class Query extends HtmlContent
 		$filteredParams = $this->report->getParams();
 
 		$params = array_merge(...$filteredParams);
-		
+
 		array_walk($params, function(&$v, $k) {
-			$v = "<tr><th><label for='$k'>$k</label></th>"
-			."<td><input name='$k' value='$v'/></td></tr>";
+
+			if (is_array($v)) {
+
+				$str = "<tr><th><label for='$k'>$k</label></th>"
+					. "<td><select name='$k' required>";
+				foreach ($v as $lbl => $val) {
+					$str .= "<option value='$val'>$lbl</option>";
+				}
+				$str .= "</select>";
+
+				$v = $str;
+
+			} else {
+				$v = "<tr><th><label for='$k'>$k</label></th>"
+				."<td><input name='$k' value='$v'/></td></tr>";
+			}
+
 		});
 		
 		return implode("", $params);

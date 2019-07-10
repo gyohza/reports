@@ -20,7 +20,7 @@ class Report
 		try {
 			
 			// Checks if provided alias matches an existing report.
-			if (!file_exists("./queries/$reportAlias.json")) throw new Exception('Report does not exist!');
+			if (!file_exists("./queries/$reportAlias.json")) throw new Exception("Report [$reportAlias] does not exist!");
 			$this->meta = json_decode(file_get_contents("./queries/$reportAlias.json"), true);
 			
 			// Throws an error if JSON parsing unsuccessful.

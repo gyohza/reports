@@ -133,7 +133,7 @@ label {
 	padding: 3px 15px;
 }
 
-input {
+input, select {
 	text-align: center;
 	font-size: 1.1em;
 	padding: 4px;
